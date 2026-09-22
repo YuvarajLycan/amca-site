@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdvocacyRouteImport } from './routes/advocacy'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as MembershipRouteImport } from './routes/membership'
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdvocacyRoute = AdvocacyRouteImport.update({
+  id: '/advocacy',
+  path: '/advocacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -74,6 +80,7 @@ const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/advocacy': typeof AdvocacyRoute
   '/contact': typeof ContactRoute
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/advocacy'
     | '/contact'
     | '/events'
     | '/membership'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/advocacy'
     | '/contact'
     | '/events'
     | '/membership'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/advocacy'
     | '/contact'
     | '/events'
     | '/membership'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AdvocacyRoute: typeof AdvocacyRoute
   ContactRoute: typeof ContactRoute
   EventsRoute: typeof EventsRoute
   MembershipRoute: typeof MembershipRoute
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/advocacy': {
+      id: '/advocacy'
+      path: '/advocacy'
+      fullPath: '/advocacy'
+      preLoaderRoute: typeof AdvocacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AdvocacyRoute: AdvocacyRoute,
   ContactRoute: ContactRoute,
   EventsRoute: EventsRoute,
   MembershipRoute: MembershipRoute,

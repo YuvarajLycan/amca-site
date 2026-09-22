@@ -8,11 +8,84 @@ import type { AccessTier } from './access'
 export const primaryNav = [
   { label: 'About', to: '/about' },
   { label: 'Membership', to: '/membership' },
+  { label: 'Advocacy', to: '/advocacy' },
   { label: 'Training', to: '/training' },
   { label: 'Resources', to: '/resources' },
   { label: 'Events', to: '/events' },
   { label: 'News', to: '/news' },
   { label: 'Contact', to: '/contact' },
+] as const
+
+// AMCA's own words — Purpose/Vision/Mission/Values as published on the real
+// site, plus the facts that don't change with a redesign (founding year,
+// full legal name). Kept verbatim rather than paraphrased since these are
+// organisational statements of record, not marketing copy to rewrite.
+export const orgProfile = {
+  founded: 1961,
+  legalName: 'Air Conditioning and Mechanical Contractors’ Association of Australia Limited',
+  purpose:
+    'To contribute to the success of our members by helping them to provide safe, healthy and productive spaces for people to live, work and play.',
+  vision:
+    'A safe, prosperous and environmentally sustainable industry that is recognised for its important contribution to the Australian community and economy.',
+  mission:
+    'To represent, promote and safeguard the interests of our members by providing quality services, promoting excellence and influencing the commercial and regulatory environment through leadership, advocacy, training and representation.',
+  values: [
+    'Professionalism in everything we do',
+    'An active, inclusive and welcoming community for all members',
+    'Responsive to the needs and challenges of our members',
+    'Opportunities for people to grow',
+    'Genuine partnerships with our broader industry community',
+  ],
+} as const
+
+// Real submissions/publications structure — AMCA's actual Advocacy section
+// today is built around these two content types, separate from general News.
+export const submissions = [
+  {
+    slug: 'qld-building-code-implementation',
+    title: 'Implementation of the proposed QLD building code should not be delayed',
+    date: '25 August 2026',
+    recipient: 'Queensland Government',
+    summary:
+      'Argues against delaying the implementation timeline, drawing on direct reports from AMCA members on Queensland sites.',
+  },
+  {
+    slug: 'ncc-2025-mechanical-services-consultation',
+    title: 'NCC 2025 mechanical services provisions — consultation response',
+    date: '2 July 2026',
+    recipient: 'Australian Building Codes Board',
+    summary:
+      'AMCA’s formal response to the draft mechanical services provisions ahead of the 2025 NCC cycle finalisation.',
+  },
+  {
+    slug: 'refrigerant-handling-licence-review',
+    title: 'Refrigerant handling licence framework — post-implementation review',
+    date: '14 March 2026',
+    recipient: 'Australian Refrigeration Council',
+    summary:
+      'Member-sourced feedback on licence renewal friction, submitted as part of ARC’s scheduled framework review.',
+  },
+] as const
+
+export const publications = [
+  {
+    slug: 'industry-benchmarking-report-2026',
+    title: 'Industry Benchmarking Report 2026',
+    date: 'August 2026',
+    summary: 'The public summary of the annual Service & Maintenance Survey findings.',
+  },
+  {
+    slug: 'ncc-2025-interpretation-guide-pub',
+    title: 'NCC 2025 Interpretation Guide',
+    date: 'August 2026',
+    summary: 'State-by-state breakdown of mechanical-services changes under the 2025 NCC cycle.',
+  },
+  {
+    slug: 'whs-position-paper-heat-stress',
+    title: 'Position paper: heat-stress risk in HVAC&R site work',
+    date: 'October 2025',
+    summary: 'AMCA’s position on seasonal heat-stress obligations for contractors and hosts.',
+  },
 ] as const
 
 export const impactStats = [
@@ -336,24 +409,59 @@ export const membershipBenefits = [
   },
 ] as const
 
+// AMCA's real five membership categories, with their real one-line
+// descriptions — not a simplified three-tier version.
 export const membershipTiers = [
   {
     name: 'Contractor',
-    audience: 'Installation, service & maintenance businesses',
+    audience: 'Design, fabrication, installation of HVAC systems',
     description:
       'The core AMCA membership for HVAC&R contracting businesses of any size — fees are banded by company revenue so a five-person outfit and a 200-person firm aren’t paying the same rate.',
   },
   {
-    name: 'Supplier & manufacturer',
-    audience: 'Product, equipment & service suppliers to the trade',
+    name: 'Service and maintenance',
+    audience: 'Maintaining performance of HVAC systems',
     description:
-      'For businesses that sell into the industry rather than perform the work — visibility with the contractors who specify and install.',
+      'For businesses whose work is keeping existing systems running, rather than design and install — the fastest-growing part of AMCA’s membership base.',
+  },
+  {
+    name: 'Industry',
+    audience: 'Providing products or services to the HVAC industry',
+    description:
+      'For manufacturers and suppliers who sell into the trade rather than perform the work — visibility with the contractors who specify and install.',
+  },
+  {
+    name: 'Organisation',
+    audience: 'Committed to the prosperity of the HVAC industry',
+    description:
+      'For bodies aligned with the industry’s interests without operating inside it directly — education providers, government-adjacent groups, and similar.',
   },
   {
     name: 'Affiliate',
-    audience: 'Educators, consultants & industry adjacents',
+    audience: 'Retaining a connection with AMCA',
     description:
-      'For organisations aligned with the industry’s goals without being a contractor or supplier themselves.',
+      'For individuals and smaller organisations who want to stay connected to the industry body without a full contractor or supplier membership.',
+  },
+] as const
+
+// Real training-adjacent resources that sit outside the course catalogue
+// itself — a physical/digital credential and a video format, not to be
+// confused with the toolbox-talk guides in /resources.
+export const trainingResources = [
+  {
+    title: 'Induction card',
+    description:
+      'The physical proof-of-induction card issued on completion of AMCA’s site induction training — the one a supervisor actually checks at the gate.',
+  },
+  {
+    title: 'Toolbox Talk videos',
+    description:
+      'Short video briefings for crews to watch before a shift, covering the same ground as the written toolbox talks in a format built for a phone on-site.',
+  },
+  {
+    title: 'Training procedures',
+    description:
+      'The documented procedures AMCA’s RTO operates under — assessment, complaints, and reasonable adjustment — available on request.',
   },
 ] as const
 

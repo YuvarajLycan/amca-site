@@ -24,15 +24,23 @@ const columns = [
     links: [
       { label: 'Our industry', to: '/about' },
       { label: 'Board & governance', to: '/about' },
+      { label: 'BIM-MEP AUS', to: '/about' },
       { label: 'Careers', to: '/about' },
     ],
   },
   {
     heading: 'Membership',
     links: [
-      { label: 'Why join', to: '/membership' },
       { label: 'Membership types', to: '/membership' },
       { label: 'Find a member', to: '/membership' },
+      { label: 'Preferred partners', to: '/about' },
+    ],
+  },
+  {
+    heading: 'Advocacy',
+    links: [
+      { label: 'Submissions', to: '/advocacy' },
+      { label: 'Publications', to: '/advocacy' },
     ],
   },
   {
@@ -40,15 +48,15 @@ const columns = [
     links: [
       { label: 'Course catalogue', to: '/training' },
       { label: 'Training calendar', to: '/training' },
-      { label: 'RTO compliance', to: '/training' },
+      { label: 'Induction card', to: '/training' },
     ],
   },
   {
-    heading: 'News & advocacy',
+    heading: 'News',
     links: [
       { label: 'Latest news', to: '/news' },
-      { label: 'Submissions & position papers', to: '/news' },
       { label: 'Events', to: '/events' },
+      { label: 'Resources', to: '/resources' },
     ],
   },
 ]
@@ -56,7 +64,7 @@ const columns = [
 export function Footer() {
   return (
     <footer className="bg-navy-950 text-white/70">
-      <Container className="grid gap-12 py-16 lg:grid-cols-[1.3fr_2fr]">
+      <Container className="grid gap-12 py-16 lg:grid-cols-[1fr_2.4fr]">
         <div className="max-w-sm">
           <Logo tone="light" />
           <p className="mt-5 text-sm leading-relaxed text-white/60">
@@ -82,7 +90,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {columns.map((col) => (
             <div key={col.heading}>
               <h3 className="text-xs font-semibold uppercase tracking-[0.14em] text-white/40">

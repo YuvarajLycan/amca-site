@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { useState } from 'react'
 import {
   ArrowRight,
   BookOpen,
   CalendarDays,
+  CheckCircle2,
   GraduationCap,
+  Mail,
   Megaphone,
   ShieldCheck,
   Users,
@@ -343,6 +346,58 @@ function Home() {
           </div>
         </Container>
       </section>
+
+      <Newsletter />
     </div>
+  )
+}
+
+function Newsletter() {
+  const [subscribed, setSubscribed] = useState(false)
+
+  return (
+    <section className="border-t border-ink-100 bg-sand-100 py-16">
+      <Container className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="text-xl font-bold text-navy-950">
+            Get important HVAC updates delivered to your inbox.
+          </h2>
+          <p className="mt-1.5 text-sm text-ink-500">
+            Join over 3,000 HVAC professionals getting AMCA news and training dates — no spam,
+            unsubscribe any time.
+          </p>
+        </div>
+        {subscribed ? (
+          <p className="flex shrink-0 items-center gap-2 text-sm font-semibold text-teal-700">
+            <CheckCircle2 size={18} />
+            You&apos;re subscribed.
+          </p>
+        ) : (
+          <form
+            className="flex w-full shrink-0 gap-2 sm:w-auto"
+            onSubmit={(e) => {
+              e.preventDefault()
+              setSubscribed(true)
+            }}
+          >
+            <div className="flex flex-1 items-center gap-2 rounded-full border border-ink-200 bg-white px-4 py-2.5 sm:w-72">
+              <Mail size={15} className="text-ink-300" />
+              <input
+                required
+                type="email"
+                placeholder="you@company.com.au"
+                className="w-full bg-transparent text-sm text-navy-950 placeholder:text-ink-300 focus:outline-none"
+              />
+            </div>
+            <button
+              type="submit"
+              className="shrink-0 rounded-full bg-navy-950 px-5 py-2.5 text-sm font-semibold text-white hover:bg-navy-800"
+            >
+              Subscribe
+            </button>
+          </form>
+        )}
+      </Container>
+    </section>
   )
 }

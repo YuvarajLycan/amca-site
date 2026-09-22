@@ -46,36 +46,38 @@
 }
 
 /*
- * "Brand match" theme — built from AMCA's actual sampled colours
- * (navy #0072AE, orange #F47920, teal #45C2AE), rather than the
- * refined palette above. Same structural roles (dark hero surface,
- * signal CTA, knowledge-teal accent), different source hues.
- * Tailwind v4 utilities reference these as var(--color-*), so
- * overriding them here re-themes every utility class at runtime —
- * no rebuild needed.
+ * "Current AMCA colours" theme — sampled directly, pixel by pixel, from
+ * AMCA's real public member-logo pack (not a guess from a screenshot).
+ * Their actual identity turns out to be two blues — a wordmark blue
+ * (#0c73af) and a brighter circulating-arrows cyan (#00b2cf) — with no
+ * orange anywhere in the mark itself, so this theme is deliberately a
+ * blue/cyan family throughout rather than reusing the orange accent from
+ * the "new brand colours" concept. Tailwind v4 utilities reference these
+ * as var(--color-*), so overriding them here re-themes every utility
+ * class at runtime — no rebuild needed.
  */
 :root[data-theme='brand'] {
-  --color-navy-950: #05304d;
-  --color-navy-900: #063a5c;
-  --color-navy-800: #08496f;
-  --color-navy-700: #0a5885;
-  --color-navy-600: #0072ae;
+  --color-navy-950: #013e52;
+  --color-navy-900: #01495f;
+  --color-navy-800: #025771;
+  --color-navy-700: #036687;
+  --color-navy-600: #0c73af;
 
-  --color-blue-600: #0072ae;
-  --color-blue-500: #1c8cc4;
+  --color-blue-600: #0c73af;
+  --color-blue-500: #2d92c9;
   --color-blue-100: #dceef7;
 
-  --color-signal-600: #da5f13;
-  --color-signal-500: #f47920;
-  --color-signal-400: #f79a54;
-  --color-signal-100: #fde7d6;
+  --color-signal-600: #018aa1;
+  --color-signal-500: #00b2cf;
+  --color-signal-400: #33c2da;
+  --color-signal-100: #d9f3f7;
 
-  --color-teal-600: #2e9481;
-  --color-teal-500: #45c2ae;
-  --color-teal-100: #dff5f0;
+  --color-teal-600: #045a73;
+  --color-teal-500: #0c73af;
+  --color-teal-100: #dceef7;
 
-  --color-sand-50: #f5f8fa;
-  --color-sand-100: #eaf1f5;
+  --color-sand-50: #f4f9fb;
+  --color-sand-100: #e8f3f7;
 }
 
 @layer base {

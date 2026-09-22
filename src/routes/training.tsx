@@ -1,11 +1,18 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CalendarDays, Download, GraduationCap, Percent, ShieldCheck } from 'lucide-react'
+import {
+  BadgeCheck,
+  CalendarDays,
+  Download,
+  GraduationCap,
+  Percent,
+  ShieldCheck,
+} from 'lucide-react'
 import { Container } from '../components/Container'
 import { Button } from '../components/Button'
 import { AccessGate } from '../components/AccessGate'
 import { PageHero, SectionHeading } from '../components/SectionHeading'
 import { Why } from '../lib/rationale'
-import { courses, trainingCategories } from '../lib/content'
+import { courses, trainingCategories, trainingResources } from '../lib/content'
 
 export const Route = createFileRoute('/training')({ component: Training })
 
@@ -177,6 +184,25 @@ function Training() {
               printable version is a genuine reason to join rather than a paywall on basic
               information.
             </Why>
+          </div>
+        </Container>
+      </section>
+
+      {/* Real training-adjacent resources */}
+      <section className="py-24">
+        <Container>
+          <SectionHeading
+            eyebrow="Beyond the courses"
+            title="Induction cards, toolbox videos, and the paperwork behind the RTO"
+          />
+          <div className="mt-10 grid gap-5 sm:grid-cols-3">
+            {trainingResources.map((r) => (
+              <div key={r.title} className="rounded-2xl border border-ink-100 bg-white p-6 shadow-card">
+                <BadgeCheck size={20} className="text-teal-600" />
+                <h3 className="mt-3 text-sm font-bold text-navy-950">{r.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-500">{r.description}</p>
+              </div>
+            ))}
           </div>
         </Container>
       </section>

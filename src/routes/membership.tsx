@@ -51,9 +51,11 @@ function Membership() {
                     <option value="" disabled>
                       Select one
                     </option>
-                    <option>Contractor (install / service & maintenance)</option>
-                    <option>Supplier or manufacturer</option>
-                    <option>Affiliate (educator, consultant, other)</option>
+                    <option>Contractor</option>
+                    <option>Service and maintenance</option>
+                    <option>Industry</option>
+                    <option>Organisation</option>
+                    <option>Affiliate</option>
                   </select>
                 </div>
                 <div>
@@ -124,10 +126,10 @@ function Membership() {
         <Container>
           <SectionHeading
             eyebrow="Membership types"
-            title="Three ways to belong"
-            description="Every membership type gets a vote, a directory listing and access to the knowledge hub. What changes is the committee seats and benefits relevant to your business."
+            title="Five ways to belong"
+            description="AMCA's real membership categories — every type gets a vote, a directory listing and access to the knowledge hub. What changes is the committee seats and benefits relevant to your business."
           />
-          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {membershipTiers.map((tier) => (
               <div key={tier.name} className="rounded-2xl border border-ink-100 bg-white p-7 shadow-card">
                 <ShieldCheck size={20} className="text-signal-500" />
