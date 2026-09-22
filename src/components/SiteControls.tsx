@@ -37,7 +37,7 @@ export function SiteControls() {
                     : 'border-ink-200 text-ink-700'
                 }`}
               >
-                This version
+                New brand colours
               </button>
               <button
                 onClick={() => setTheme('brand')}
@@ -47,7 +47,7 @@ export function SiteControls() {
                     : 'border-ink-200 text-ink-700'
                 }`}
               >
-                AMCA&apos;s colours
+                Current AMCA colours
               </button>
             </div>
           </div>

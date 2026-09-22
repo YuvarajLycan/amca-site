@@ -55,11 +55,11 @@
  * no rebuild needed.
  */
 :root[data-theme='brand'] {
-  --color-navy-950: #071b2b;
-  --color-navy-900: #0a2740;
-  --color-navy-800: #0e3454;
-  --color-navy-700: #124267;
-  --color-navy-600: #15517e;
+  --color-navy-950: #05304d;
+  --color-navy-900: #063a5c;
+  --color-navy-800: #08496f;
+  --color-navy-700: #0a5885;
+  --color-navy-600: #0072ae;
 
   --color-blue-600: #0072ae;
   --color-blue-500: #1c8cc4;
