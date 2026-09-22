@@ -1,6 +1,10 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
+import { SiteControls } from '../components/SiteControls'
+import { ThemeProvider } from '../lib/theme'
+import { RationaleProvider } from '../lib/rationale'
+import { AccessProvider } from '../lib/access'
 
 import appCss from '../styles.css?url'
 
@@ -34,9 +38,16 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <RationaleProvider>
+            <AccessProvider>
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <SiteControls />
+            </AccessProvider>
+          </RationaleProvider>
+        </ThemeProvider>
         <Scripts />
       </body>
     </html>

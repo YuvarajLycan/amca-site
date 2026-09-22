@@ -11,6 +11,8 @@ import {
 import { Container } from '../components/Container'
 import { Button } from '../components/Button'
 import { SectionHeading } from '../components/SectionHeading'
+import { AccessBadge } from '../components/AccessGate'
+import { Why } from '../lib/rationale'
 import {
   events,
   impactStats,
@@ -54,6 +56,11 @@ function Home() {
               Browse training courses
             </Button>
           </div>
+          <Why>
+            The old homepage led with a rotating carousel selling a third-party Testo discount —
+            no h1, nothing stating what AMCA is. This states it in the first six words and gets
+            out of the way.
+          </Why>
         </Container>
       </section>
 
@@ -71,6 +78,11 @@ function Home() {
               </div>
             ))}
           </div>
+          <Why>
+            This is the DSCI pattern you liked — credibility in numbers, above the fold, before
+            you ask anyone to read a paragraph. Every figure here is one AMCA can actually stand
+            behind (member count, years operating, RTO status), not filler stats.
+          </Why>
         </Container>
       </section>
 
@@ -108,6 +120,11 @@ function Home() {
               )
             })}
           </div>
+          <Why>
+            This is the "Impact + Knowledge Expert + Training" brief translated into a structure:
+            represent (impact/advocacy), train (the knowledge/training angle), connect
+            (membership). Every other section on this page is one of these three, expanded.
+          </Why>
         </Container>
       </section>
 
@@ -129,6 +146,12 @@ function Home() {
             <div className="mt-8 flex flex-wrap gap-4">
               <Button to="/training">See the course catalogue</Button>
             </div>
+            <Why>
+              This isn&apos;t a guess: real analytics on amca.com.au show Training pulling 1,117
+              page views against 388 for Events — more than events, news, the directory and
+              membership combined. A redesign that buried this to match a generic association
+              template would be working against the site&apos;s own traffic.
+            </Why>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {trainingCategories.map((course) => (
@@ -158,7 +181,7 @@ function Home() {
               description="Most of what AMCA publishes is open to the whole industry, not locked behind a login. The exceptions are clearly marked, and they're the documents worth joining for."
             />
             <Link
-              to="/news"
+              to="/resources"
               className="hidden items-center gap-1.5 text-sm font-semibold text-navy-950 hover:text-signal-600 sm:inline-flex"
             >
               View all resources
@@ -168,30 +191,30 @@ function Home() {
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {knowledgeResources.map((item) => (
-              <div
-                key={item.title}
-                className="flex flex-col rounded-2xl border border-ink-100 bg-white p-6 shadow-card"
+              <Link
+                key={item.slug}
+                to="/resources/$slug"
+                params={{ slug: item.slug }}
+                className="flex flex-col rounded-2xl border border-ink-100 bg-white p-6 shadow-card transition-shadow hover:shadow-lift"
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <span className="text-xs font-semibold uppercase tracking-wide text-teal-600">
                     {item.category}
                   </span>
-                  <span
-                    className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
-                      item.access === 'Member resource'
-                        ? 'bg-signal-100 text-signal-600'
-                        : 'bg-teal-100 text-teal-600'
-                    }`}
-                  >
-                    {item.access}
-                  </span>
+                  <AccessBadge tier={item.tier} />
                 </div>
                 <h3 className="mt-4 text-base font-bold text-navy-950">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{item.summary}</p>
                 <BookOpen size={16} className="mt-4 text-ink-300" />
-              </div>
+              </Link>
             ))}
           </div>
+          <Why>
+            The three-tier access model lives here first: open guides (public), guides that ask
+            for a verified email before unlocking (a real lead-capture mechanism, not a wall), and
+            data that stays inside membership. See a locked one for the actual unlock flow — it&apos;s
+            simulated for this preview, explained on the card itself.
+          </Why>
         </Container>
       </section>
 
@@ -223,6 +246,11 @@ function Home() {
               </div>
             ))}
           </div>
+          <Why>
+            The audit found the real membership page hides pricing inside a 20-month-old PDF, and
+            that the primary "Become a member" button is an image with no alt text — invisible to
+            a screen reader or Google. This section leads with the fee-band promise instead.
+          </Why>
         </Container>
       </section>
 
@@ -244,7 +272,8 @@ function Home() {
               {newsItems.slice(0, 4).map((item) => (
                 <Link
                   key={item.slug}
-                  to="/news"
+                  to="/news/$slug"
+                  params={{ slug: item.slug }}
                   className="flex flex-col gap-1.5 p-6 transition-colors hover:bg-sand-50 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>

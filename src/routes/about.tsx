@@ -3,6 +3,7 @@ import { Building2, Gavel, GraduationCap, Users2 } from 'lucide-react'
 import { Container } from '../components/Container'
 import { Button } from '../components/Button'
 import { PageHero, SectionHeading } from '../components/SectionHeading'
+import { Why } from '../lib/rationale'
 import { roles } from '../lib/content'
 
 export const Route = createFileRoute('/about')({ component: About })
@@ -107,6 +108,12 @@ function About() {
               </div>
             ))}
           </div>
+          <Why>
+            Pulled directly from the ARM Hub audit&apos;s persona research (eight roles, eight
+            expectations). It&apos;s here on About rather than buried in a research deck because
+            it explains, to AMCA&apos;s own board, why the rest of the site is organised the way
+            it is.
+          </Why>
         </Container>
       </section>
 

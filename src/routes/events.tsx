@@ -3,6 +3,7 @@ import { CalendarDays, MapPin } from 'lucide-react'
 import { Container } from '../components/Container'
 import { Button } from '../components/Button'
 import { PageHero, SectionHeading } from '../components/SectionHeading'
+import { Why } from '../lib/rationale'
 import { events } from '../lib/content'
 
 export const Route = createFileRoute('/events')({ component: Events })
@@ -70,6 +71,12 @@ function Events() {
               </div>
             ))}
           </div>
+          <Why>
+            The original proposal treated &quot;National Conference&quot; and &quot;state
+            events&quot; as separate nav sections. They&apos;re the same content type at
+            different scales, so they live on one page with a state filter — the agency&apos;s
+            own later note agreed state events didn&apos;t need their own top-level section.
+          </Why>
         </Container>
       </section>
 

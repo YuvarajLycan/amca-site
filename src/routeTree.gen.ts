@@ -15,7 +15,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as EventsRouteImport } from './routes/events'
 import { Route as MembershipRouteImport } from './routes/membership'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as TrainingRouteImport } from './routes/training'
+import { Route as NewsSlugRouteImport } from './routes/news_.$slug'
+import { Route as ResourcesSlugRouteImport } from './routes/resources_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -47,9 +50,24 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TrainingRoute = TrainingRouteImport.update({
   id: '/training',
   path: '/training',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news_/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/resources_/$slug',
+  path: '/resources/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -60,7 +78,10 @@ export interface FileRoutesByFullPath {
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
   '/news': typeof NewsRoute
+  '/resources': typeof ResourcesRoute
   '/training': typeof TrainingRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -69,7 +90,10 @@ export interface FileRoutesByTo {
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
   '/news': typeof NewsRoute
+  '/resources': typeof ResourcesRoute
   '/training': typeof TrainingRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -79,7 +103,10 @@ export interface FileRoutesById {
   '/events': typeof EventsRoute
   '/membership': typeof MembershipRoute
   '/news': typeof NewsRoute
+  '/resources': typeof ResourcesRoute
   '/training': typeof TrainingRoute
+  '/news_/$slug': typeof NewsSlugRoute
+  '/resources_/$slug': typeof ResourcesSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -90,7 +117,10 @@ export interface FileRouteTypes {
     | '/events'
     | '/membership'
     | '/news'
+    | '/resources'
     | '/training'
+    | '/news/$slug'
+    | '/resources/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -99,7 +129,10 @@ export interface FileRouteTypes {
     | '/events'
     | '/membership'
     | '/news'
+    | '/resources'
     | '/training'
+    | '/news/$slug'
+    | '/resources/$slug'
   id:
     | '__root__'
     | '/'
@@ -108,7 +141,10 @@ export interface FileRouteTypes {
     | '/events'
     | '/membership'
     | '/news'
+    | '/resources'
     | '/training'
+    | '/news_/$slug'
+    | '/resources_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -118,7 +154,10 @@ export interface RootRouteChildren {
   EventsRoute: typeof EventsRoute
   MembershipRoute: typeof MembershipRoute
   NewsRoute: typeof NewsRoute
+  ResourcesRoute: typeof ResourcesRoute
   TrainingRoute: typeof TrainingRoute
+  NewsSlugRoute: typeof NewsSlugRoute
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -165,11 +204,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/training': {
       id: '/training'
       path: '/training'
       fullPath: '/training'
       preLoaderRoute: typeof TrainingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news_/$slug': {
+      id: '/news_/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources_/$slug': {
+      id: '/resources_/$slug'
+      path: '/resources/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -182,7 +242,10 @@ const rootRouteChildren: RootRouteChildren = {
   EventsRoute: EventsRoute,
   MembershipRoute: MembershipRoute,
   NewsRoute: NewsRoute,
+  ResourcesRoute: ResourcesRoute,
   TrainingRoute: TrainingRoute,
+  NewsSlugRoute: NewsSlugRoute,
+  ResourcesSlugRoute: ResourcesSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

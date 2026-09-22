@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { CheckCircle2, Mail, MapPin, Phone } from 'lucide-react'
 import { Container } from '../components/Container'
 import { PageHero } from '../components/SectionHeading'
+import { Why } from '../lib/rationale'
 
 export const Route = createFileRoute('/contact')({ component: Contact })
 
@@ -46,6 +47,12 @@ function Contact() {
                 Melbourne, VIC — with state chapter contacts across every territory.
               </p>
             </div>
+            <Why>
+              On the real site, the header and footer versions of &quot;become a member&quot;
+              open two different pages, and clicking &quot;General enquiry&quot; produces no
+              visible response. One form, one set of destinations, and a confirmation state fixes
+              both.
+            </Why>
           </div>
 
           <div className="rounded-3xl border border-ink-100 bg-white p-8 shadow-card sm:p-10">

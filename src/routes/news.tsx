@@ -1,8 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useMemo, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Container } from '../components/Container'
+import { AccessBadge } from '../components/AccessGate'
 import { PageHero, SectionHeading } from '../components/SectionHeading'
+import { Why } from '../lib/rationale'
 import { newsItems } from '../lib/content'
 
 export const Route = createFileRoute('/news')({ component: News })
@@ -42,26 +44,25 @@ function News() {
               </button>
             ))}
           </div>
+          <Why>
+            The real amca.com.au mixes marketing posts, submissions and safety notes under one
+            unfiltered "News" tab with no way to tell them apart. Category filtering plus an
+            access badge on every card fixes both at once.
+          </Why>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {filtered.map((item) => (
-              <article
+              <Link
                 key={item.slug}
-                className="flex flex-col rounded-2xl border border-ink-100 bg-white p-7 shadow-card"
+                to="/news/$slug"
+                params={{ slug: item.slug }}
+                className="flex flex-col rounded-2xl border border-ink-100 bg-white p-7 shadow-card transition-shadow hover:shadow-lift"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-xs font-semibold uppercase tracking-wide text-teal-600">
                     {item.category}
                   </span>
-                  <span
-                    className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${
-                      item.access === 'Member resource'
-                        ? 'bg-signal-100 text-signal-600'
-                        : 'bg-teal-100 text-teal-600'
-                    }`}
-                  >
-                    {item.access}
-                  </span>
+                  <AccessBadge tier={item.tier} />
                 </div>
                 <h3 className="mt-4 text-lg font-bold text-navy-950">{item.title}</h3>
                 <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-500">{item.excerpt}</p>
@@ -69,7 +70,7 @@ function News() {
                   <span className="text-xs text-ink-500">{item.date}</span>
                   <ArrowUpRight size={16} className="text-navy-950" />
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
@@ -84,7 +85,7 @@ function News() {
           <SectionHeading
             eyebrow="Our commitment"
             title="Open by default"
-            description="If AMCA writes it — a submission, a position paper, an industry note — it's published for the whole industry to read. The only documents that sit behind member login are the ones with real commercial or negotiated content, like the full benchmarking dataset or an EBA template."
+            description="If AMCA writes it — a submission, a position paper, an industry note — it's published for the whole industry to read. Some pieces ask for a verified email before unlocking; only the ones with real commercial content, like the full benchmarking dataset, sit inside membership."
           />
         </Container>
       </section>

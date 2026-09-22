@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { CheckCircle2, Search, ShieldCheck } from 'lucide-react'
 import { Container } from '../components/Container'
 import { PageHero, SectionHeading } from '../components/SectionHeading'
+import { Why } from '../lib/rationale'
 import { membershipBenefits, membershipTiers } from '../lib/content'
 
 export const Route = createFileRoute('/membership')({ component: Membership })
@@ -109,6 +110,12 @@ function Membership() {
               </div>
             )}
           </div>
+          <Why>
+            The audit’s single highest-severity finding: no membership price appears anywhere
+            on the real site — it lives inside a PDF dated 20 months ago, and the price only
+            shows up in a downloaded course-enrolment page after a visitor has already left
+            amca.com.au. This estimator puts a number on the page in two clicks.
+          </Why>
         </Container>
       </section>
 
@@ -190,6 +197,11 @@ function Membership() {
               Search the directory
             </button>
           </div>
+          <Why>
+            The current member directory renders all 1,092 records on a single 717KB page with
+            two filters. This version filters server-side by state and name instead of asking a
+            browser to render a spreadsheet.
+          </Why>
         </Container>
       </section>
     </div>

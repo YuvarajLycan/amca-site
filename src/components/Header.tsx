@@ -15,12 +15,12 @@ export function Header() {
           <Logo tone="light" />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-5 xl:flex">
           {primaryNav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="text-sm font-medium text-white/75 transition-colors hover:text-white"
+              className="text-sm font-medium whitespace-nowrap text-white/75 transition-colors hover:text-white"
               activeProps={{ className: 'text-white' }}
             >
               {item.label}
@@ -28,13 +28,13 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <a href="#" className="text-sm font-medium text-white/70 hover:text-white">
+        <div className="hidden items-center gap-3 xl:flex">
+          <a href="#" className="text-sm font-medium whitespace-nowrap text-white/70 hover:text-white">
             Member login
           </a>
           <Link
             to="/membership"
-            className="inline-flex items-center rounded-full bg-signal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-signal-600"
+            className="inline-flex items-center rounded-full bg-signal-500 px-4 py-2 text-sm font-semibold whitespace-nowrap text-white hover:bg-signal-600"
           >
             Become a member
           </Link>
@@ -42,7 +42,7 @@ export function Header() {
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md p-2 text-white lg:hidden"
+          className="inline-flex items-center justify-center rounded-md p-2 text-white xl:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
@@ -52,7 +52,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div className="border-t border-white/10 bg-navy-950 lg:hidden">
+        <div className="border-t border-white/10 bg-navy-950 xl:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {primaryNav.map((item) => (
               <Link
