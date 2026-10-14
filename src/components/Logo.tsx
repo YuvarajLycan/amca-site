@@ -42,7 +42,7 @@ export function Logo({ tone = 'light' }: { tone?: 'light' | 'dark' }) {
     return (
       <span className="inline-flex items-center">
         <img
-          src={isLight ? '/brand/amca-logo-white.png' : '/brand/amca-logo-color.png'}
+          src={`${import.meta.env.BASE_URL}brand/${isLight ? 'amca-logo-white.png' : 'amca-logo-color.png'}`}
           alt="AMCA Australia"
           className="h-8 w-auto sm:h-9"
         />
